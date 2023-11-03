@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'salas.daniel.simpledrawingapp'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "salas.daniel.simpledrawingapp"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
