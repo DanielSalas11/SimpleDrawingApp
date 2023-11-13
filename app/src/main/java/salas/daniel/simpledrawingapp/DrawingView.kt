@@ -21,11 +21,30 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs){
     private var color = Color.BLACK
     private var canvas: Canvas? = null
     private val mPaths = ArrayList<CustomPath>()
+    private val mUndoPaths = ArrayList<CustomPath>()
 
     init{
         setUpDrawing()
     }
 
+    fun onClickUndo(){
+        if(mPaths.size > 0){
+            mUndoPaths.add(mPaths.removeAt(mPaths.size-1))
+            //mPaths.removeAt(mPaths.size-1)
+            invalidate()
+        }
+    }
+    fun onClickRedo(){
+        if(mUndoPaths.size > 0){
+            mPaths.add(mUndoPaths.removeAt(mUndoPaths.size-1))
+            //mUndoPaths.removeAt(mPaths.size-1)
+            invalidate()
+        }
+    }
+
+    fun onClickSave(){
+
+    }
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
         mCanvasBitmap = Bitmap.createBitmap(w,h, Bitmap.Config.ARGB_8888)
